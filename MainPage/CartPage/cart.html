@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glamify- Cart</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="cart.css">
+
+</head>
+
+<body>
+    <header>
+        <div id="top">
+            <h3>Free delivery for orders above Rs. 799</h3>
+        </div>
+    </header>
+
+    <navbar id="navbar">
+        <div id="main">
+            <!-- Logo -->
+            <div id="logo">
+                <img id="img" src="c:\Users\Harshvardhan\OneDrive\Desktop\image\WhatsApp Image 2024-09-01 at 15.01.36_5fe85791.jpg" alt="Aura Amore Logo">
+            </div>
+            <!-- Search box -->
+            <div class="box">
+                <form name="search" onsubmit="return false;">
+                    <input type="text" class="input" id="search-input" placeholder="Search Items"
+                        oninput="filterProducts()">
+                </form>
+                <i class="fa fa-search"></i>
+            </div>
+            <!-- Icons -->
+            <div id="icons">
+                <i class="fa fa-home"></i>
+                <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+                <i class="fa fa-id-badge"></i>
+            </div>
+            <!-- Hamburger icon for mobile/tablet -->
+            <div id="hamburger" class="fa fa-bars"></div>
+        </div>
+        <!-- Dropdown Menu -->
+        <div id="dropdown-menu">
+            <a href="#"><i class="fa fa-home"></i> Home</a>
+            <a href="cart.html"><i class="fa fa-shopping-cart"></i> Store</a>
+            <a href="#"><i class="fa fa-id-badge"></i> Profile</a>
+        </div>
+    </navbar>
+    <header>
+        <h1>Your Cart</h1>
+    </header>
+
+    <div class="cart-container">
+        <div class="cart-items" id="cart-items">
+            <!-- Items will be populated dynamically -->
+        </div>
+
+        <div class="cart-total" id="cart-total">Total: Rs. 0</div>
+
+        <div class="cart-actions">
+            <button class="cart-btn clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+            <button class="cart-btn" onclick="makePayment()"><a href="../payment/payment.html">Payment</a></button>
+        </div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Initialize cart items with a quantity of 1 if not set
+        cart.forEach(item => {
+            if (!item.quantity) {
+                item.quantity = 1;
+            }
+        });
+
+        function displayCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
+                cartTotalElement.textContent = 'Total: Rs. 0';
+            } else {
+                let totalPrice = 0;
+                cart.forEach((item, index) => {
+                    const itemTotalPrice = item.price * item.quantity;
+                    totalPrice += itemTotalPrice;
+                    cartItemsContainer.innerHTML += `
+                        <div class="cart-item">
+                            <img src="${item.img}" alt="${item.name}">
+                            <div class="cart-item-info">
+                                <div class="cart-item-details">
+                                    <h3>${item.name}</h3>
+                                    <p>${item.desc}</p>
+                                </div>
+                            </div>
+                            <div class="cart-item-actions">
+                                <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+                                <button onclick="removeItem(${index})" class="cart-btn">Remove</button>
+                            </div>
+                            <div class="cart-item-price">Rs. ${itemTotalPrice}</div>
+                        </div>
+                    `;
+                });
+
+                cartTotalElement.textContent = `Total: Rs. ${totalPrice}`;
+            }
+        }
+
+        function updateQuantity(index, quantity) {
+            if (quantity <= 0) {
+                removeItem(index);
+            } else {
+                cart[index].quantity = parseInt(quantity);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCart();
+            }
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            localStorage.removeItem('cart');
+            alert('Cart cleared!');
+            displayCart();
+        }
+
+        function makePayment() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+            } else {
+                alert('Proceeding to payment page.');
+                // Add your checkout logic here
+            }
+        }
+
+        // Initialize Cart Display
+        displayCart();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+/* Common styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Store Page Layout */
+.store-container {
+    display: flex;
+    padding: 2rem;
+}
+
+/* Filter Section */
+.filter-section {
+    width: 25%;
+    padding-right: 2rem;
+    background-color: white;
+    border-right: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    height: min-content;
+}
+
+#filter-header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    /* background-color: #f0f0f0; */
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+    cursor: pointer;
+}
+
+#filter-content {
+    display: block;
+}
+
+.filter-group {
+    margin-bottom: 2rem;
+    margin: 2rem;
+}
+
+.filter-group h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.filter-group label {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.filter-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.filter-group input[type="range"] {
+    width: 100%;
+}
+
+/* Product Grid Section */
+.product-section {
+    width: 75%;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+.product h3 {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.product p {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 1rem;
+}
+
+.product-price {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #ff4e50;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.buy-btn,
+.cart-btn {
+    background-color: #ff4e50;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.cart-btn {
+    background-color: #333;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 800px) {
+    .store-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .filter-section {
+        width: 100%;
+        padding-right: 0;
+        border-right: none;
+    }
+
+    #filter-header {
+        padding: 1rem;
+        background-color: #f4f4f9;
+        margin-bottom: 0;
+        cursor: pointer;
+        display: block;
+    }
+
+    #filter-content {
+        display: none;
+    }
+
+    .product-section {
+        width: 100%;
+    }
+}

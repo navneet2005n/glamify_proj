@@ -1,0 +1,886 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+#top {
+    background: linear-gradient();
+    text-align: center;
+    padding: 5px 0;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Navbar Styles */
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+#navbar .nav-logo img {
+    width: 70px;
+    /* Smaller logo size */
+    height: auto;
+}
+
+#navbar .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+#navbar .nav-links li {
+    font-size: 1.2rem;
+}
+
+#navbar .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+#navbar .nav-links a i {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+#navbar .nav-links a:hover {
+    color: #ff4e50;
+}
+
+/* Mobile Menu Icon */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger i {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+/* Dropdown Menu (Hidden by Default) */
+.mobile-dropdown {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.mobile-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-dropdown ul li {
+    padding: 10px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.mobile-dropdown ul li a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+
+.mobile-dropdown ul li a:hover {
+    background-color: #f4f4f4;
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+    #navbar .nav-links {
+        display: none;
+    }
+
+    #navbar .hamburger {
+        display: block;
+    }
+
+    /* Show the dropdown when hamburger is clicked */
+    .mobile-dropdown.active {
+        display: block;
+    }
+}
+
+
+#hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem;
+    /* background: linear-gradient(135deg, #f0f0f0, #cfcfcf); */
+    animation: fadeIn 1s ease-in-out;
+}
+
+#text {
+    flex: 1;
+    margin-right: 2rem;
+    animation: slideInLeft 1s ease-out;
+}
+
+#heading h1 {
+    font-size: 3rem;
+    color: #333;
+    text-shadow: 2px 2px 10px ;
+}
+
+#details p {
+    font-size: 1.5rem;
+    color: #555;
+    margin-top: 1.5rem;
+}
+
+#images {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 1;
+    animation: slideInRight 1s ease-out;
+}
+
+#images div {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#images div:hover {
+    transform: translateY(-10px);
+    animation: bounce 0.5s ease-out;
+}
+
+#men img,
+#women img {
+    width: 14rem;
+    height: 15rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+}
+
+#men img:hover,
+#women img:hover {
+    width: 15rem;
+    height: 16rem;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+#men p,
+#women p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    text-align: center;
+    color: #444;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-15px);
+    }
+
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    #hero {
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    #text {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        animation: slideInUp 1s ease-out;
+    }
+
+    #heading h1 {
+        font-size: 2rem;
+    }
+
+    #details p {
+        font-size: 1.2rem;
+    }
+
+    #images {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    #men img,
+    #women img {
+        width: 12rem;
+        height: 13rem;
+    }
+
+    #men img:hover,
+    #women img:hover {
+        width: 13rem;
+        height: 14rem;
+    }
+
+    #men p,
+    #women p {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #heading h1 {
+        font-size: 1.5rem;
+    }
+
+    #details p {
+        font-size: 1rem;
+    }
+
+    #men img,
+    #women img {
+        width: 10rem;
+        height: 11rem;
+    }
+
+    #men img:hover,
+    #women img:hover {
+        width: 11rem;
+        height: 12rem;
+    }
+
+    #men p,
+    #women p {
+        font-size: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animation for Featured Products Section */
+#featured-products {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+#featured-products h2{
+    margin-bottom: 1rem;
+}
+
+.product-grid {
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: slideInUp 1.5s ease;
+}
+
+.product {
+    background-color: ;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 1.5s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.store-button {
+    display: inline-block;
+    margin-top: 2rem; /* Space above the button */
+    padding: 10px 20px;
+    background-color: #ff4e50; /* Button background color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 25px; /* Rounded corners */
+    text-align: center;
+    font-size: 1.2rem;
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition for hover effects */
+}
+
+.store-button:hover {
+    background-color: #ffd52d; /* Background color on hover */
+    color: #333; /* Text color on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+}
+/* Container styling */
+#testimonials {
+    width: 99%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    padding: 150px 20px; /* Add some horizontal padding for smaller screens */
+    background-color: #d4d1c5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonials heading */
+#testimonials h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input form styling */
+.testimonial-form {
+    margin-bottom: 30px;
+}
+
+.testimonial-form input[type="text"] {
+    width: 90%; /* Increase width for mobile devices */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.testimonial-form button {
+    width: 90%; /* Make button width responsive */
+    padding: 10px 0; /* Adjust padding for better clickability */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.testimonial-form button:hover {
+    background-color: #218838;
+}
+
+/* Styling for the testimonials display */
+.testimonials-container {
+    margin-top: 20px;
+}
+
+.testimonial {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: left;
+}
+
+.testimonial p {
+    font-style: italic;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.testimonial span {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Delete button styling */
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    #testimonials {
+        padding: 100px 10px; /* Reduce vertical padding */
+    }
+
+    #testimonials h2 {
+        font-size: 24px; /* Adjust heading size */
+    }
+
+    .testimonial-form input[type="text"],
+    .testimonial-form button {
+        width: 95%; /* Make inputs and button wider */
+    }
+
+    .testimonial {
+        padding: 12px; /* Adjust padding for smaller devices */
+    }
+
+    .testimonial p {
+        font-size: 16px; /* Smaller font size for testimonials */
+    }
+
+    .testimonial span {
+        font-size: 14px; /* Smaller font size for names */
+    }
+}
+
+@media (max-width: 480px) {
+    #testimonials {
+        padding: 80px 5px; /* Further reduce padding for very small screens */
+    }
+
+    #testimonials h2 {
+        font-size: 20px; /* Adjust heading size further */
+    }
+
+    .testimonial {
+        padding: 10px; /* Less padding for very small screens */
+    }
+}
+
+/* Blog Section */
+#blog {
+    padding: 4rem 2rem;
+    background-color: #f4f4f9;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+#blog h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.blog-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.blog-post {
+    width: 30%;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: slideInUp 1.5s ease;
+}
+
+.blog-post img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.blog-post h3 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    color: #444;
+}
+
+.blog-post p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.blog-post a {
+    color: #ff4e50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.blog-post:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    #blog {
+        padding: 3rem 1rem; /* Reduce padding for smaller screens */
+    }
+
+    #blog h2 {
+        font-size: 2rem; /* Adjust heading size */
+    }
+
+    .blog-grid {
+        justify-content: center; /* Center align the grid on smaller screens */
+    }
+
+    .blog-post {
+        width: 45%; /* Change width for tablets */
+        margin: 10px; /* Add margin for spacing */
+    }
+}
+
+@media (max-width: 480px) {
+    #blog {
+        padding: 2rem 0.5rem; /* Further reduce padding for very small screens */
+    }
+
+    #blog h2 {
+        font-size: 1.5rem; /* Further adjust heading size */
+    }
+
+    .blog-post {
+        width: 90%; /* Make blog posts full width on mobile */
+        margin: 10px auto; /* Center align with margin */
+    }
+
+    .blog-post h3 {
+        font-size: 1.25rem; /* Adjust heading size for mobile */
+    }
+
+    .blog-post p {
+        font-size: 0.9rem; /* Adjust paragraph size for mobile */
+    }
+}
+
+
+/* FAQ Section */
+#faq {
+    padding: 4rem 2rem;
+    background-color: #d4d1c5;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+#faq h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.faq-item {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: slideInRight 1.5s ease;
+}
+
+.faq-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+.faq-item p {
+    font-size: 1rem;
+    color: #666;
+}
+/* Login Section */
+#login {
+    padding: 3rem 2rem;
+    background-color: #f4f4f9;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+#login h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    /* Reduced margin to create space between heading and paragraph */
+}
+
+#login p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    /* Added margin to create space between text and form */
+}
+
+#login form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* Increased gap for better spacing between form fields */
+    margin-bottom: 1.5rem;
+    /* Added margin between form and sign-up text */
+    animation: slideInDown 1.5s ease;
+}
+
+#login form a {
+    color: white;
+    
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#login button {
+    padding: 10px 30px;
+    background-color: #ff4e50;
+   
+    border: none;
+    border-radius: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#login button:hover {
+    background-color: #ffd52d;
+    color: #333;
+    transform: translateY(-3px);
+}
+
+/* Signup text and link */
+.signup-text {
+    font-size: 1rem;
+    color: #666;
+}
+
+.signup-text a {
+    color: #ff4e50;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.signup-text a:hover {
+    color: #ffd52d;
+}
+
+/* Responsive adjustments for login section */
+@media (max-width: 768px) {
+    #login h2 {
+        font-size: 2rem;
+    }
+
+    #login input {
+        max-width: 300px;
+    }
+
+    #login button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #login h2 {
+        font-size: 1.8rem;
+    }
+
+    #login input {
+        max-width: 100%;
+    }
+
+    #login button {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+}
+
+
+
+/* Footer Animation */
+#footer {
+    background-color: #333;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    animation: slideInRight 1.5s ease;
+}
+
+.footer-column {
+    margin: 1rem;
+}
+
+.footer-column h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Additional Hover Effects */
+.social-icons li a:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Animations for the Entire Page */
+@keyframes pageFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+body {
+    animation: pageFadeIn 2s ease-in;
+}
+#images{
+    margin-left: 770px;
+}
+

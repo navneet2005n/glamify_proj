@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="filter.css">
+    <script src="filter.js"></script>
+    <title> - Store</title>
+</head>
+
+<body>
+    <header>
+        <div id="top">
+            <h3>Free delivery for orders above Rs. 799</h3>
+        </div>
+    </header>
+
+    <navbar id="navbar">
+        <div id="main">
+            <!-- Logo -->
+            <div id="logo">
+                <img id="img" src="c:\Users\Harshvardhan\OneDrive\Desktop\image\WhatsApp Image 2024-09-01 at 15.01.36_5fe85791.jpg" alt=" Logo">
+            </div>
+            <!-- Search box -->
+            <div class="box">
+                <form name="search" onsubmit="return false;">
+                    <input type="text" class="input" id="search-input" placeholder="Search Items"
+                        oninput="filterProducts()">
+                </form>
+                <i class="fa fa-search"></i>
+            </div>
+            <!-- Icons -->
+            <div id="icons">
+                <a href="file:///C:/Users/Harshvardhan/OneDrive/Desktop/2.oooo/glamify/MainPage/Main.html"><i class="fa fa-home"></i></a>
+                <a href="file:///C:/Users/Harshvardhan/OneDrive/Desktop/2.oooo/glamify/MainPage/CartPage/cart.html"><i class="fa fa-shopping-cart"></i></a>
+                <i class="fa fa-id-badge"></i>
+            </div>
+            <!-- Hamburger icon for mobile/tablet -->
+            <div id="hamburger" class="fa fa-bars"></div>
+        </div>
+        <!-- Dropdown Menu -->
+        <div id="dropdown-menu">
+            <a href="#"><i class="fa fa-home"></i> Home</a>
+            <a href=""><i class="fa fa-shopping-cart"></i> Store</a>
+            <a href="#"><i class="fa fa-id-badge"></i> Profile</a>
+        </div>
+    </navbar>
+
+    <!-- Store Content -->
+    <div class="store-container">
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <button id="filter-header">Filter</button>
+            <div id="filter-content">
+                <!-- Category Filter -->
+                <div class="filter-group">
+                    <h3>Category</h3>
+                    <label><input type="checkbox" class="category" value="haircare" onchange="filterProducts()">
+                        Haircare</label>
+                    <label><input type="checkbox" class="category" value="skincare" onchange="filterProducts()">
+                        Skincare</label>
+                    <label><input type="checkbox" class="category" value="beauty" onchange="filterProducts()">
+                        Beauty</label>
+                </div>
+
+                <!-- Price Range Filter -->
+                <!-- Price Range Filter -->
+                <div class="filter-group">
+                    <h3>Price Range</h3>
+                    <input type="range" min="100" max="1000" step="50" id="price-range" value="1000"
+                        oninput="updatePriceLabel(); filterProducts();">
+                    <label>Rs. <span id="price-value">1000</span></label>
+                </div>
+
+
+                <!-- Brand Filter -->
+                <div class="filter-group">
+                    <h3>Brand</h3>
+                    <label><input type="checkbox" class="brand" value="Tresemme" onchange="filterProducts()">
+                        Tresemme</label>
+                    <label><input type="checkbox" class="brand" value="Dove" onchange="filterProducts()"> Dove</label>
+                    <label><input type="checkbox" class="brand" value="Park Avenue" onchange="filterProducts()"> Park
+                        Avenue</label>
+                    <label><input type="checkbox" class="brand" value="Loreal" onchange="filterProducts()">
+                        Loreal</label>
+                    <label><input type="checkbox" class="brand" value="Sunny" onchange="filterProducts()"> Sunny</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Grid Section -->
+        <section class="product-section">
+            <div class="product-container" id="product-container">
+                <div class="product" data-name="tresemme shampoo" data-category="haircare" data-brand="Tresemme"
+                    data-price="613">
+                    <img src="haircare/51G9m3uJIIL._AC_UL480_FMwebp_QL65_.webp" alt="Product 1">
+                    <h3>Tresemme Hair Fall Defence Shampoo</h3>
+                    <p>For smooth and shiny hair</p>
+                    <div class="product-price">Rs. 613</div>
+                    <button class="cart-btn"
+                        onclick="addToCart('Tresemme Hair Fall Defence Shampoo', 613,'haircare/51G9m3uJIIL._AC_UL480_FMwebp_QL65_.webp','For smooth and shiny hair')">Add
+                        to
+                        Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+                <div class="product" data-name="dove shampoo" data-category="haircare" data-brand="Dove"
+                    data-price="455">
+                    <img src="haircare/samp.webp" alt="Product 2">
+                    <h3>Dove Hair Fall Rescue Shampoo</h3>
+                    <p>For Weak hair</p>
+                    <div class="product-price">Rs. 455</div>
+                    <button class="cart-btn"
+                        onclick="addToCart('Dove Hair Fall Rescue Shampoo', 455,'haircare/samp.webp','For Weak hair')">Add
+                        to
+                        Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+                <div class="product" data-name="park avenue shampoo" data-category="haircare" data-brand="Park Avenue"
+                    data-price="292">
+                    <img src="haircare/sempoo.webp" alt="Product 3">
+                    <h3>Park Avenue Beer Shampoo</h3>
+                    <p>For bouncy and shiny hair</p>
+                    <div class="product-price">Rs. 292</div>
+                    <button class="cart-btn"
+                        onclick="addToCart('Park Avenue Beer Shampoo', 292,'haircare/sempoo.webp','For bouncy and shiny hair')">Add
+                        to Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+                <div class="product" data-name="loreal shampoo" data-category="haircare" data-brand="Loreal"
+                    data-price="219">
+                    <img src="haircare/sampoo.webp" alt="Product 1">
+                    <h3>Loreal Paris Shampoo</h3>
+                    <p>For damaged and weak hair</p>
+                    <div class="product-price">Rs. 219</div>
+                    <button class="cart-btn"
+                        onclick="addToCart('Loreal Paris Shampoo', 219,'haircare/sampoo.webp','For damaged and weak hair')">Add
+                        to Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+                <div class="product" data-name="sunny shampoo" data-category="haircare" data-brand="Sunny"
+                    data-price="311">
+                    <img src="haircare/sa.webp" alt="Product 1">
+                    <h3>Sunny Arnica Shampoo</h3>
+                    <p>For soft and shiny hair</p>
+                    <div class="product-price">Rs. 311</div>
+                    <button class="cart-btn"
+                        onclick="addToCart('Sunny Arnica Shampoo', 311,'haircare/sa.webp','For soft and shiny hair')">Add
+                        to Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+                <div class="product" data-name="loreal shampoo" data-category="haircare" data-brand="Loreal"
+                    data-price="389">
+                    <img src="haircare/sampooooo.webp" alt="Product 1">
+                    <h3>Loreal Paris Shampoo</h3>
+                    <p>For damaged and weak hair</p>
+                    <div class="product-price">Rs. 389</div>
+                    <button class="cart-btn"
+                        onclick="addToCart('Loreal Paris Shampoo', 389,'haircare/sampooooo.webp','For damaged and weak hair')">Add
+                        to Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+
+                <div class="product" data-name="dove Moisturizing Lotion" data-category="skincare" data-brand="Dove"
+                    data-price="399">
+                    <img src="haircare/Moisturizing Lotion D.webp" alt="Product 2">
+                    <h3>Dove Moisturizing Lotion</h3>
+                    <p>Hydration for all skin types</p>
+                    <div class="product-price">Rs. 399</div>
+                    <button class="cart-btn"
+                        onclick="addToCart('Dove Moisturizing Lotion', 399,'haircare/Moisturizing Lotion D.webp','Hydration for all skin types')">Add
+                        to Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+                <div class="product" data-name="dove Moisturizing Lotion" data-category="skincare" data-brand="Dove"
+                    data-price="399">
+                    <img src="haircare/Moisturizing Lotion DD.webp" alt="Product 2">
+                    <h3>Dove Intensive Moisturizing Lotion</h3>
+                    <p>Best for winters</p>
+                    <div class="product-price">Rs. 400</div>
+                    <button class="cart-btn"
+                        onclick="addToCart('Dove Intensive Moisturizing Lotion', 400,'haircare/Moisturizing Lotion DD.webp','Best for winters')">Add
+                        to Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+                <div class="product" data-name="loreal Moisturizing Lotion" data-category="skincare" data-brand="Loreal"
+                    data-price="399">
+                    <img src="haircare/Moisturizing Lotion L.webp" alt="Product 2">
+                    <h3>Loreal Revitalift Moisturizing Lotion</h3>
+                    <p>For smooth Skin</p>
+                    <div class="product-price">Rs. 945</div>
+                    <button class="cart-btn"
+                        onclick="addToCart('Loreal Revitalift Moisturizing Lotion', 945,'haircare/Moisturizing Lotion L.webp','For smooth Skin')">Add
+                        to Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+                <div class="product" data-name="loreal Lipstick Matte" data-category="beauty" data-brand="Loreal"
+                    data-price="849">
+                    <img src="haircare/Lipstick Matte L.webp" alt="Product 3">
+                    <h3>Loreal Lipstick Matte</h3>
+                    <p>Bold, long-lasting color</p>
+                    <div class="product-price">Rs. 849</div>
+                    <button class="cart-btn" onclick="addToCart('Loreal Lipstick Matte', 849,'haircare/Lipstick Matte L.webp','Bold, long-lasting color')">Add to Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+                <div class="product" data-name="loreal Lipstick Matte" data-category="beauty" data-brand="Loreal"
+                    data-price="849">
+                    <img src="haircare/Lipstick Matte LL.webp" alt="Product 3">
+                    <h3>Loreal Infallible Lipstick Matte</h3>
+                    <p>Bold, long-lasting color</p>
+                    <div class="product-price">Rs. 749</div>
+                    <button class="cart-btn" onclick="addToCart('Loreal Infallible Lipstick Matte', 749,'haircare/Lipstick Matte LL.webp','Bold, long-lasting color')">Add to Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Cart Page -->
+    <div id="cart-page" style="display: none;">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+
+</body>
+
+</html>

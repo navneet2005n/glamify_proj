@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Main.css">
+    <title>Glamify - Haircare page</title>
+</head>
+<body>
+    <header>
+        <div id="top">
+            <h3></h3>
+        </div>
+    </header>
+
+<!-- Navbar Section -->
+<nav id="navbar">
+    <div class="nav-logo">
+        <a href="Main.html"><img src="c:\Users\Harshvardhan\OneDrive\Desktop\image\WhatsApp Image 2024-09-01 at 15.01.36_5fe85791.jpg" alt="Aura Amore Logo"></a>
+    </div>
+
+    <!-- Nav Links -->
+    <ul class="nav-links">
+        <li><a href="Main.html"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="StorePage/filter.html"><i class="fa fa-truck"></i> Store</a></li>
+        <li><a href="CartPage/cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+        <li><a href="C:\Users\Harshvardhan\OneDrive\Desktop\2.oooo\glamify\Sign_upPage\sign_up.html" onclick="scrollToLogin()"><i class="fa fa-user"></i> Sign Up</a></li>
+    </ul>
+
+    <!-- Mobile Menu Icon -->
+    <div class="hamburger" onclick="toggleDropdown()">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <!-- Dropdown Menu for Mobile -->
+    <div class="mobile-dropdown" id="mobileDropdown">
+        <ul>
+            <li><a href="Main.html"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="StorePage/filter.html"><i class="fa fa-truck"></i>Store</a></li>
+            <li><a href="CartPage/cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+            <li><a href="Sign_upPage/sign_up.html" onclick="scrollToLogin()"><i class="fa fa-user"></i> Sign Up</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+</section>
+
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <div id="text">
+            <div id="heading">
+                <h1>Welcome To Glamify</h1>
+            </div>
+            <div id="details">
+                <p>"Embrace your beauty, illuminate your essence."</p>
+                <p>Available for both Men and Women </p>
+        </div>
+        <div id="images">
+           
+            <div id="men">
+                <!-- <img src="images/th.jpeg"> -->
+                <!-- <p>Men</p> -->
+            </div>
+            <div id="women">
+                <img src="mainpage\src\images\Lana Rhoades.jpg">
+                <p>Women</p>
+            </div>
+        </div>
+    </section>
+    <!-- Featured Products Section -->
+    <section id="featured-products">
+        <h2>Featured Cosmetic Products</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="images/shampoo.jpg" alt="Shampoo">
+                <h3>Nourishing Shampoo</h3>
+                <p>For silky and smooth hair</p>
+            </div>
+            <div class="product">
+                <img src="images/conditioner.jpg" alt="Conditioner">
+                <h3>Revitalizing Conditioner</h3>
+                <p>For deep hair conditioning</p>
+            </div>
+            <div class="product">
+                <img src="images/hair_oil.jpg" alt="Hair Oil">
+                <h3>Herbal Hair Oil</h3>
+                <p>Promotes healthy hair growth</p>
+            </div>
+            
+            <div class="product">
+                <img src="images/images.12" alt="Moisturizer">
+                <h3>Hydrating Moisturizer</h3>
+                <p>Deep hydration for glowing skin</p>
+            </div>
+            <div class="product">
+                <img src="images/conditioner.jpg" alt="Sunscreen">
+                <h3>Broad Spectrum Sunscreen</h3>
+                <p>Protects against UVA/UVB rays</p>
+            </div>
+            <div class="product">
+                <img src="images/images.11" alt="Lip Balm">
+                <h3>Soothing Lip Balm</h3>
+                <p>Hydrates and nourishes dry lips</p>
+            </div>
+            <div class="product">
+                <img src="images/shampoo.jpg" alt="Body Scrub">
+                <h3>Exfoliating Body Scrub</h3>
+                <p>Buffs away dead skin for smoothness</p>
+            </div>
+        </div>
+        <a href="StorePage/filter.html" class="store-button">View All Products</a>
+    </section>
+    
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <h2>What Our Customers Say</h2>
+    
+    <!-- User Input Form for Testimonials -->
+    <div class="testimonial-form">
+        <input type="text" id="userComment" placeholder="Enter your testimonial here" required>
+        <input type="text" id="userName" placeholder="Your name" required>
+        <button onclick="addTestimonial()">Submit</button>
+    </div>
+
+    <!-- Testimonials Display -->
+    <div class="testimonials-container" id="testimonialsContainer"></div>
+</section>
+
+
+<!-- Blog section -->
+    <section id="blog">
+        <h2>Latest from Our Blog</h2>
+        <div class="blog-grid">
+            <div class="blog-post">
+                <img src="images/blog1.jpg" alt="Haircare Tips">
+                <h3>5 Essential Haircare Tips</h3>
+                <p>Discover how to maintain healthy and shiny hair with these simple and effective tips...</p>
+                <a href="#">Read More</a>
+            </div>
+            <div class="blog-post">
+                <img src="images/blog2.jpg" alt="Product Review">
+                <h3>Our Best Hair Oil Reviewed</h3>
+                <p>Check out why this hair oil is a customer favorite and how it helps reduce hair fall...</p>
+                <a href="#">Read More</a>
+            </div>
+            <div class="blog-post">
+                <img src="images/blog3.jpg" alt="Styling Advice">
+                <h3>Top Hairstyles for 2024</h3>
+                <p>Want to stay trendy? Here are the top hairstyles for both men and women this year...</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+    </section>
+    <!-- Faq section -->
+    
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <h3>What products are best for my hair type?</h3>
+                <p>We offer a wide variety of products tailored for all hair types. You can explore the products based on your hair’s texture and requirements...</p>
+            </div>
+            <div class="faq-item">
+                <h3>How long does delivery take?</h3>
+                <p>Orders are processed within 1-2 days and delivered within 3-5 business days, depending on your location...</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do you offer any return or refund policies?</h3>
+                <p>Yes, we offer a 30-day return policy for unopened and unused products. Simply contact our support team to initiate a return...</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+<!-- Login Section -->
+<section id="login">
+    <h2>Login to Glamify</h2>
+    <p>Access your account to view your orders, track shipments, and more!</p>
+    
+    <!-- Form starts here -->
+    <form id="login-form">
+        <button type="submit"><a href="../LoginPage/login.html">Login</a></button>
+    </form>
+    
+    <!-- Sign-up link below login form -->
+    <p class="signup-text">Don't have an account? <a href="../Sign_upPage/sign_up.html">Sign Up</a></p>
+</section>
+
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Help & FAQs</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+
+                </ul>
+            </div>
+        </div>
+        <p>&copy; 2024 Glamify. All rights reserved.</p>
+    </footer>
+
+    <script src="Main.js"></script>
+</body>
+
+</html>

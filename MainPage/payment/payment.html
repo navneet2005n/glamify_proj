@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            padding: 70px;
+            color: white;
+            background-color: #f5f5f5;
+            background-image: url("image/bg.jpg");
+            background-size: cover;
+        }
+        .form-container {
+            padding: 40px;
+            border-radius: 5px;
+            width: 430px;
+            height: 500px;
+            margin: auto;
+            background-color: rgba(169, 128, 128, 0.046);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        h2 {
+            margin-top: 12px;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Ensures padding is included in width */
+        }
+        .payment-method {
+            display: none;
+        }
+        button {
+            margin-top: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: black;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+        button:hover {
+            background-color: whitesmoke;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2></h2>
+        <form id="paymentForm">
+            
+    
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="upi">UPI</option>
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="netbanking">Net Banking</option>
+                </select>
+            </div>
+    
+            <div id="upi" class="payment-method" style="display: none;">
+                <h3>UPI Payment</h3>
+                <div class="form-group">
+                    <label for="upi-id">UPI ID:</label>
+                    <input type="text" id="upi-id" name="upi-id">
+                </div>
+            </div>
+    
+            <div id="card" class="payment-method" style="display: none;">
+                <h3>Card Payment</h3>
+                <div class="form-group">
+                    <label for="card-number">Card Number:</label>
+                    <input type="number" id="card-number" name="card-number">
+                </div>
+                <div class="form-group">
+                    <label for="expiry-date">Expiry Date (MM/YY):</label>
+                    <input type="text" id="expiry-date" name="expiry-date">
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="number" id="cvv" name="cvv">
+                </div>
+            </div>
+    
+            <div id="netbanking" class="payment-method" style="display: none;">
+                <h3>Net Banking</h3>
+                <div class="form-group">
+                    <label for="bank-name">Bank Name:</label>
+                    <input type="text" id="bank-name" name="bank-name">
+                </div>
+                <div class="form-group">
+                    <label for="account-number">Account Number:</label>
+                    <input type="number" id="account-number" name="account-number">
+                </div>
+                <div class="form-group">
+                    <label for="ifsc-code">IFSC Code:</label>
+                    <input type="text" id="ifsc-code" name="ifsc-code">
+                </div>
+            </div>
+    
+            <button type="submit">Purchase</button>
+        </form>
+    </div>
+    
+    <script>
+        const paymentMethodSelect = document.getElementById('payment-method');
+        const paymentMethods = document.querySelectorAll('.payment-method');
+    
+        paymentMethodSelect.addEventListener('change', function() {
+            // Hide all payment method sections
+            paymentMethods.forEach(method => {
+                method.style.display = 'none';
+            });
+    
+            // Show the selected payment method section
+            const selectedMethod = this.value;
+            if (selectedMethod) {
+                document.getElementById(selectedMethod).style.display = 'block';
+            }
+        });
+    
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+    
+            // Get form data
+            const plan = document.getElementById('plan').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const paymentMethod = document.getElementById('payment-method').value;
+    
+            let paymentData = {};
+    
+            if (paymentMethod === 'upi') {
+                const upiId = document.getElementById('upi-id').value;
+                paymentData = { upiId };
+            } else if (paymentMethod === 'card') {
+                const cardNumber = document.getElementById('card-number').value;
+                const expiryDate = document.getElementById('expiry-date').value;
+                const cvv = document.getElementById('cvv').value;
+                paymentData = { cardNumber, expiryDate, cvv };
+            } else if (paymentMethod === 'netbanking') {
+                const bankName = document.getElementById('bank-name').value;
+                const accountNumber = document.getElementById('account-number').value;
+                const ifscCode = document.getElementById('ifsc-code').value;
+                paymentData = { bankName, accountNumber, ifscCode };
+            }
+    
+            // Store data in localStorage
+            const membershipData = {
+                name,
+                email,
+                phone,
+                paymentMethod,
+                paymentData
+            };
+    
+            localStorage.setItem('membershipData', JSON.stringify(membershipData));
+            alert('Membership information saved!');
+    
+            // Redirect to another page (optional)
+            window.location.href = 'home.html';
+        });
+    
+        // Optional: Load and display saved membership data (if any) on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedData = localStorage.getItem('membershipData');
+            if (savedData) {
+                const membershipData = JSON.parse(savedData);
+                alert(`Welcome back, ${membershipData.name}. You have selected the ${membershipData.plan} plan.`);
+            }
+        });
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="profile.css"> <!-- Link your CSS file here -->
+    <title>Profile Page</title>
+    <script>
+        // Check if the user is logged in
+        window.onload = function () {
+            if (localStorage.getItem("loggedIn") !== "true") {
+                // Redirect to sign up or login page if not logged in
+                // window.location.href = "login.html";
+            } else {
+                // Display user information
+                displayUserInfo();
+                updateUserNameDisplay();
+            }
+        };
+
+        function displayUserInfo() {
+            const userName = localStorage.getItem("fullName") || 'User';
+            const userEmail = localStorage.getItem("userEmail");
+            const userAge = localStorage.getItem("age") || 'N/A'; // Default to 'N/A' if not set
+            const userGender = localStorage.getItem("gender") || 'N/A'; // Default to 'N/A' if not set
+
+            document.getElementById('userName').textContent = `Welcome, ${userName}!`;
+            document.getElementById('userEmail').textContent = userEmail;
+            document.getElementById('userAge').textContent = userAge;
+            document.getElementById('userGender').textContent = userGender;
+
+            // Set the inputs to current user information
+            document.getElementById('ageInput').value = userAge === 'N/A' ? '' : userAge; // Only set if not 'N/A'
+            const genderInput = document.querySelector(`input[name="genderInput"][value="${userGender}"]`);
+            if (genderInput) {
+                genderInput.checked = true;
+            }
+            document.getElementById('nameInput').value = userName; // Set name input
+        }
+
+        function handleLogout() {
+            localStorage.removeItem("loggedIn");
+            localStorage.removeItem("fullName");
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("age");
+            localStorage.removeItem("gender");
+            window.location.href = "login.html"; // Redirect to login page
+        }
+
+        function updateProfile(event) {
+            event.preventDefault();
+            const newUserName = document.getElementById('nameInput').value;
+            const newAge = document.getElementById('ageInput').value;
+            const newGender = document.querySelector('input[name="genderInput"]:checked').value;
+
+            // Update localStorage with new values
+            localStorage.setItem("fullName", newUserName);
+            localStorage.setItem("age", newAge);
+            localStorage.setItem("gender", newGender);
+
+            // Update displayed information
+            displayUserInfo();
+
+            // Update user name display
+            updateUserNameDisplay();
+
+            alert("Profile updated successfully!");
+        }
+
+        // Function to update the user name display
+        function updateUserNameDisplay() {
+            const userName = localStorage.getItem("fullName") || 'User';
+            const displayName = userName ? `Hello, ${userName}` : 'Welcome!';
+            document.getElementById('displayUserName').textContent = displayName;
+
+            // Update mobile dropdown as well
+            const mobileDropdown = document.querySelector('#mobileDropdown ul');
+            mobileDropdown.innerHTML = `
+                <li><a href="#home"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#store"><i class="fa fa-truck"></i> Store</a></li>
+                <li><a href="#cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                <li><span>${displayName}</span></li>
+            `;
+        }
+
+        // Toggle dropdown menu on mobile
+        function toggleDropdown() {
+            const dropdown = document.getElementById('mobileDropdown');
+            dropdown.classList.toggle('active');
+        }
+        localStorage.setItem("fullName", fullName);
+    localStorage.setItem("userEmail", email);
+
+    /* Toggle dropdown menu on mobile */
+    function toggleDropdown() {
+        const dropdown = document.getElementById('mobileDropdown');
+        dropdown.classList.toggle('active');
+    }
+    const newUserName = document.getElementById('nameInput').value;
+    localStorage.setItem("fullName", newUserName); // Save the new name
+
+    </script>
+</head>
+
+<body>
+  
+
+    <!-- Navbar Section -->
+    <nav id="navbar">
+        <div class="nav-logo">
+            <a href="#"><img src="images/logo.PNG" alt="Aura Amore Logo"></a>
+        </div>
+
+        <!-- Nav Links -->
+        <ul class="nav-links">
+            <li><a href="#home"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#store"><i class="fa fa-truck"></i> Store</a></li>
+            <li><a href="#cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+        </ul>
+
+        <!-- User Name Display -->
+        <div class="user-name-display">
+            <span id="displayUserName"></span>
+        </div>
+
+        <!-- Mobile Menu Icon -->
+        <div class="hamburger" onclick="toggleDropdown()">
+            <i class="fa fa-bars"></i>
+        </div>
+
+        <!-- Dropdown Menu for Mobile -->
+        <div class="mobile-dropdown" id="mobileDropdown">
+            <ul>
+                <li><a href="#home"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#store"><i class="fa fa-truck"></i> Store</a></li>
+                <li><a href="#cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="profile">
+        <div class="profile-header">
+            <h2 id="userName">Welcome, User!</h2>
+            <button class="logout-btn" onclick="handleLogout()">Logout</button>
+        </div>
+        <div class="profile-info">
+            <p><strong>Email:</strong> <span id="userEmail">user@example.com</span></p>
+            <p><strong>Age:</strong> <span id="userAge">N/A</span></p>
+            <p><strong>Gender:</strong> <span id="userGender">N/A</span></p>
+        </div>
+
+        <h3>Update Your Information</h3>
+        <form onsubmit="updateProfile(event)">
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput" required>
+
+            <label for="ageInput">Age:</label>
+            <input type="number" id="ageInput" required>
+
+            <label>Gender:</label>
+            <div class="gender-options">
+                <label><input type="radio" name="genderInput" value="Male" required> Male</label>
+                <label><input type="radio" name="genderInput" value="Female"> Female</label>
+                <label><input type="radio" name="genderInput" value="Other"> Other</label>
+            </div>
+
+            <button type="submit">Update Profile</button>
+        </form>
+    </section>
+
+ 
+</body>
+
+</html>
